@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-    sarah = User.new(email: 'kirkse710@gmail.com')
-    sarah.encrypted_password = '$2a$11$C/Uy0lj/iQ3EM67nIEeWQejwZq1lQ.HIejjJE.bK1t8tenCGZa34e'
-    sarah.save!
+    User.find_or_create_by(email: 'kirkse710@gmail.com') do |user|
+        (user.email = 'kirkse710@gmail.com',
+          user.password = Rails.application.secrets[:sarah_password],
+          user.password_confirmation = Rails.application.secrets[:sarah_password])
+    end
