@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
     User.find_or_create_by(email: 'kirkse710@gmail.com') do |user|
-        (user.email = 'kirkse710@gmail.com',
+        (user.email = Rails.application.secrets[:sarah_email],
           user.password = Rails.application.secrets[:sarah_password],
           user.password_confirmation = Rails.application.secrets[:sarah_password])
     end
